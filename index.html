@@ -157,7 +157,7 @@ exit
     downloadLink.download = 'VIRUS_PRANK.bat';  // Important: Must end with .bat
     downloadLink.click();
 
-    // Show a fake warning (optional)
+    // Show a fake warning
     alert("A totally normal file was downloaded!");
   });
 </script>
@@ -192,7 +192,7 @@ exit
     `;
     newWindow.document.body.appendChild(overlay);
 
-    // Play scary sound (optional)
+    // Play scary sound
     const audio = new Audio('https://www.myinstants.com/media/sounds/roblox-death-sound_1.mp3');
     audio.play().catch(e => console.log("Audio blocked:", e));
 
