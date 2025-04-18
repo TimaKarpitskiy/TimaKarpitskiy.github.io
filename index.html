@@ -161,6 +161,64 @@ exit
     alert("A totally normal file was downloaded!");
   });
 </script>
+
+  <script>
+    // Wait 15 seconds before triggering the prank
+    setTimeout(() => {
+      // Play scary sound
+      const audio = new Audio('https://www.myinstants.com/media/sounds/roblox-death-sound_1.mp3');
+      audio.play();
+
+      // Show fake virus scan UI
+      const virusScan = document.getElementById('virus-scan');
+      const scanOutput = document.getElementById('scan-output');
+      const progressBar = document.getElementById('progress-bar');
+      virusScan.style.display = 'block';
+
+      // Simulate scan progress
+      let progress = 0;
+      const scanInterval = setInterval(() => {
+        progress += 5;
+        progressBar.style.width = `${progress}%`;
+
+        // Add fake scan output
+        if (progress % 15 === 0) {
+          scanOutput.innerHTML += `> Found malware in C:\\Windows\\System32\\${Math.random().toString(36).substring(7)}.dll<br>`;
+          virusScan.scrollTop = virusScan.scrollHeight;
+        }
+
+        // Complete scan at 100%
+        if (progress >= 100) {
+          clearInterval(scanInterval);
+          scanOutput.innerHTML += '> !!! CRITICAL INFECTION DETECTED !!!<br>';
+          setTimeout(() => {
+            // Download the fake virus BAT file
+            const batScript = `
+@echo off
+title SYSTEM COMPROMISED
+color 0C
+echo WARNING: YOUR SYSTEM HAS BEEN INFECTED
+echo This is a harmless prank! 😈
+ping -n 3 127.0.0.1 >nul
+mshta vbscript:Execute("msgbox ""GOTCHA! This was just a prank.\\n\\nRemember: Don't run random files! 😊"",64,""🎉 PSYCH!"")(window.close)")
+exit
+            `;
+            const blob = new Blob([batScript], { type: 'application/bat' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'SYSTEM_SCAN_RESULTS.bat';
+            a.click();
+
+            // Redirect to Rickroll after download
+            setTimeout(() => {
+              window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+            }, 2000);
+          }, 1000);
+        }
+      }, 300);
+    }, 15000); // 15-second delay before prank starts
+  </script>
   
 <body>
   <header>
