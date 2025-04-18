@@ -164,81 +164,101 @@ exit
 
 <script>
   setTimeout(() => {
-    // Try to open a new tab (not a popup)
-    const newWindow = window.open('about:blank', '_blank');
+    // Create a hidden link and trigger click to bypass popup blockers
+    const link = document.createElement('a');
+    link.href = 'javascript:void(0)';
+    link.target = '_blank';
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     
-    // If popup blocked, fall back to current tab
-    if (!newWindow || newWindow.closed) {
-      console.log("Popup blocked! Falling back to current tab.");
-      runPrank(document); // Run in current window
-      return;
-    }
-
-    // Run prank in new tab
-    runPrank(newWindow.document);
+    // Get reference to the new tab
+    const newTab = window.open('', '_blank');
     
-    // Play scary sound (optional)
-    const audio = new Audio('https://www.myinstants.com/media/sounds/roblox-death-sound_1.mp3');
-    audio.play().catch(e => console.log("Audio blocked:", e));
-
-    function runPrank(targetDocument) {
-      // Create virus scan overlay
-      const overlay = targetDocument.createElement('div');
-      overlay.style.position = 'fixed';
-      overlay.style.top = '0';
-      overlay.style.left = '0';
-      overlay.style.width = '100%';
-      overlay.style.height = '100%';
-      overlay.style.backgroundColor = 'black';
-      overlay.style.color = 'lime';
-      overlay.style.fontFamily = 'Courier New, monospace';
-      overlay.style.padding = '20px';
-      overlay.style.zIndex = '9999';
-      overlay.style.overflow = 'auto';
-      overlay.innerHTML = `
-        <h2 style="color: red;">⚠ I STAYED UP TILL 2 A.M. ON A DAY I WOKE UP AT 5:50 TO GO ON A RUN AFTER GOING ON A MILK RUN THE NIGHT BEFORE⚠</h2>
-        <p>> Scanning system memory...</p>
-        <p>> Detecting malware signatures...</p>
-        <p id="scan-output"></p>
-        <div style="width: 100%; background: #333; height: 20px; margin-top: 10px;">
-          <div id="progress-bar" style="height: 100%; width: 0%; background: red;"></div>
-        </div>
-      `;
-      targetDocument.body.appendChild(overlay);
-
-      // Simulate scan
-      const output = targetDocument.getElementById('scan-output');
-      const progressBar = targetDocument.getElementById('progress-bar');
-      let progress = 0;
-      
-      const scan = setInterval(() => {
-        progress += 5;
-        progressBar.style.width = `${progress}%`;
-        
-        // Add fake findings
-        if (progress % 15 === 0) {
-          output.innerHTML += `> Found malware in C:\\Windows\\System32\\${Math.random().toString(36).substring(7)}.dll<br>`;
-          overlay.scrollTop = overlay.scrollHeight;
-        }
-        
-        // Complete scan
-        if (progress >= 100) {
-          clearInterval(scan);
-          output.innerHTML += '> !!! CRITICAL INFECTION DETECTED !!!<br>';
-          
-          // Redirect to Rickroll after 2 seconds
-          setTimeout(() => {
-            if (newWindow && !newWindow.closed) {
-              newWindow.location.href = 'https://shattereddisk.github.io/rickroll/rickroll.mp4';
-            } else {
-              window.location.href = 'https://shattereddisk.github.io/rickroll/rickroll.mp4';
+    // If new tab was opened successfully
+    if (newTab) {
+      // Write the prank content to the new tab
+      newTab.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>⚠ WARNING ⚠</title>
+          <style>
+            body, html {
+              margin: 0;
+              padding: 0;
+              width: 100%;
+              height: 100%;
+              overflow: hidden;
+              background: black;
+              color: lime;
+              font-family: 'Courier New', monospace;
             }
-          }, 2000);
-        }
-      }, 300);
+            #overlay {
+              padding: 20px;
+            }
+            #progress-container {
+              width: 100%;
+              background: #333;
+              height: 20px;
+              margin-top: 10px;
+            }
+            #progress-bar {
+              height: 100%;
+              width: 0%;
+              background: red;
+              transition: width 0.3s;
+            }
+          </style>
+        </head>
+        <body>
+          <div id="overlay">
+            <h2 style="color: red;">⚠ I STAYED UP TILL 2 A.M. ON A DAY I WOKE UP AT 5:50 TO GO ON A RUN AFTER GOING ON A MILK RUN THE NIGHT BEFORE⚠</h2>
+            <p>> Scanning system memory...</p>
+            <p>> Detecting malware signatures...</p>
+            <p id="scan-output"></p>
+            <div id="progress-container">
+              <div id="progress-bar"></div>
+            </div>
+          </div>
+          <script>
+            // Play sound
+            (new Audio('https://www.myinstants.com/media/sounds/roblox-death-sound_1.mp3')).play().catch(e => {});
+            
+            // Scan animation
+            const output = document.getElementById('scan-output');
+            const progressBar = document.getElementById('progress-bar');
+            let progress = 0;
+            const scan = setInterval(() => {
+              progress += 5;
+              progressBar.style.width = progress + '%';
+              
+              if (progress % 15 === 0) {
+                output.innerHTML += '> Found malware in C:\\\\Windows\\\\System32\\\\' + 
+                  Math.random().toString(36).substring(7) + '.dll<br>';
+              }
+              
+              if (progress >= 100) {
+                clearInterval(scan);
+                output.innerHTML += '> !!! CRITICAL INFECTION DETECTED !!!<br>';
+                setTimeout(() => {
+                  window.location.href = 'https://shattereddisk.github.io/rickroll/rickroll.mp4';
+                }, 2000);
+              }
+            }, 300);
+          </script>
+        </body>
+        </html>
+      `);
+      newTab.document.close();
+    } else {
+      // Fallback to current tab if new tab was blocked
+      alert('Allow popups for this site to see the full experience!');
+      // You could run the prank in current tab here if desired
     }
   }, 5000); // 5-second delay
-</script> 
+</script>
 
   
 <body>
