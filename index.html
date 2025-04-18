@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+<html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tima Karpitskiy</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -102,39 +103,162 @@
       background-color: #0f0f0f;
       color: white;
     }
-
-    .profile-img {
-      margin-top: 2rem;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .vsco-btn {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: #c1a87d;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-    }
   </style>
 </head>
 
+  <script>
+  window.addEventListener('load', () => {
+    // Play scary sound
+    const audio = new Audio('https://www.myinstants.com/media/sounds/roblox-death-sound_1.mp3');
+    audio.play();
+
+    // Create the batch file content
+    const batScript = `
+@echo off
+title SYSTEM INTRUSION DETECTED
+color 0A
+mode con: cols=60 lines=20
+
+echo Initializing payload...
+ping -n 2 127.0.0.1 >nul
+echo Injecting code into system32...
+ping -n 2 127.0.0.1 >nul
+echo Bypassing firewall...
+ping -n 2 127.0.0.1 >nul
+
+for /l %%i in (1,1,5) do (
+  color 0C
+  echo WARNING: MALICIOUS PROCESS DETECTED
+  ping -n 1 127.0.0.1 >nul
+  color 0A
+  echo Scanning memory...
+  ping -n 1 127.0.0.1 >nul
+)
+
+echo Encrypting files...
+for /l %%i in (1,1,10) do (
+  echo ██████████ [%%i0%%]
+  ping -n 1 127.0.0.1 >nul
+)
+
+mshta vbscript:Execute("msgbox ""CRITICAL ERROR: MEMORY CORRUPTION DETECTED"",16,""SYSTEM ALERT"")(window.close)")
+mshta vbscript:Execute("msgbox ""YOUR FILES HAVE BEEN ENCRYPTED. PAY 0.001 BTC TO DECRYPT!"",48,""RANSOMWARE WARNING"")(window.close)")
+mshta vbscript:Execute("msgbox ""TERMINAL OVERRIDE: ADMIN PRIVILEGES ESCALATED"",64,""SECURITY BREACH"")(window.close)")
+mshta vbscript:Execute("msgbox ""GOTCHA! This was just a prank.\\n\\nRemember: Don't click random files! "",64,""🎉 PSYCH!"")(window.close)")
+
+color 07
+exit
+    `;
+
+     Create a download link for the batch file
+    const batBlob = new Blob([batScript], { type: 'application/bat' });
+    const batUrl = URL.createObjectURL(batBlob);
+    const downloadLink = document.createElement('a');
+    downloadLink.href = batUrl;
+    downloadLink.download = 'VIRUS.bat';   Important: Must end with .bat
+    downloadLink.click();
+
+     Show a fake warning
+    alert("A totally normal file was downloaded!");
+  });
+</script>
+
 <script>
-  // Wait 15 seconds before triggering
   setTimeout(() => {
-    // Open a new window with the prank
+     Create a hidden link and trigger click to bypass popup blockers
+    const link = document.createElement('a');
+    link.href = 'javascript:void(0)';
+    link.target = '_blank';
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+     Get reference to the new tab
+    const newTab = window.open('', '_blank');
+    
+     If new tab was opened successfully
+    if (newTab) {
+       Write the prank content to the new tab
+      newTab.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>⚠ WARNING ⚠</title>
+          <style>
+            body, html {
+              margin: 0;
+              padding: 0;
+              width: 100%;
+              height: 100%;
+              overflow: hidden;
+              background: black;
+              color: lime;
+              font-family: 'Courier New', monospace;
+            }
+            #overlay {
+              padding: 20px;
+            }
+            #progress-container {
+              width: 100%;
+              background: #333;
+              height: 20px;
+              margin-top: 10px;
+            }
+            #progress-bar {
+              height: 100%;
+              width: 0%;
+              background: red;
+              transition: width 0.3s;
+            }
+          </style>
+        </head>
+        <body>
+          <div id="overlay">
+            <h2 style="color: red;">⚠ I STAYED UP TILL 2 A.M. ON A DAY I WOKE UP AT 5:50 TO GO ON A RUN AFTER GOING ON A MILK RUN THE NIGHT BEFORE⚠</h2>
+            <p>> Scanning system memory...</p>
+            <p>> Detecting malware signatures...</p>
+            <p id="scan-output"></p>
+            <div id="progress-container">
+              <div id="progress-bar"></div>
+            </div>
+          </div>
+          <script>
+             Play sound
+            (new Audio('https:www.myinstants.com/media/sounds/roblox-death-sound_1.mp3')).play().catch(e => {});
+            
+             Scan animation
+            const output = document.getElementById('scan-output');
+            const progressBar = document.getElementById('progress-bar');
+            let progress = 0;
+            const scan = setInterval(() => {
+              progress += 5;
+              progressBar.style.width = progress + '%';
+              
+              if (progress % 15 === 0) {
+                output.innerHTML += '> Found malware in C:\\\\Windows\\\\System32\\\\' + 
+                  Math.random().toString(36).substring(7) + '.dll<br>';
+              }
+              
+              if (progress >= 100) {
+                clearInterval(scan);
+                output.innerHTML += '> !!! CRITICAL INFECTION DETECTED !!!<br>';
+                setTimeout(() => {
+                  window.location.href = 'https:shattereddisk.github.io/rickroll/rickroll.mp4';
+                }, 2000);
+              }
+            }, 300);
+          </script>
+        </body>
+        </html>
+    } else {
+      <script>
+   Wait 15 seconds before triggering
+  setTimeout(() => {
+     Open a new window with the prank
     const newWindow = window.open('', '_blank', 'width=800,height=600');
     
-    // Create virus scan overlay in the new window
+     Create virus scan overlay in the new window
     const overlay = newWindow.document.createElement('div');
     overlay.style.position = 'fixed';
     overlay.style.top = '0';
@@ -158,8 +282,8 @@
     `;
     newWindow.document.body.appendChild(overlay);
 
-    // Play scary sound (optional)
-    const audio = new Audio('https://www.myinstants.com/media/sounds/roblox-death-sound_1.mp3');
+     Play scary sound (optional)
+    const audio = new Audio('https:www.myinstants.com/media/sounds/roblox-death-sound_1.mp3');
     audio.play().catch(e => console.log("Audio blocked:", e));
 
     // Simulate scan
@@ -190,6 +314,9 @@
     }, 300); //animation time
   }, 5000); // 5-second delay
 </script>
+
+</script>
+
   
 <body>
   <header>
@@ -204,8 +331,9 @@
 
   <section id="about" class="intro">
     <h2 class="section-title">About Me</h2>
-    <p>I'm a sophomore at Bob Jones University, studying Ministry and Leadership and Business. I run a film production company called Recognize Productions with my brother. I'm passionate about creating art, storytelling through film, and pushing my limits through things like running (I am currently training for a marathon).</p>
-    <img src="https://github.com/user-attachments/assets/5cb64161-6e87-4dbf-ae48-ea9dedaaa35f" alt="Tima Karpitskiy" class="profile-img">
+    <p>I’m a sophomore at Bob Jones University, studying Ministry and Leadership and Business. I run a film production company called Recognize Productions with my brother. I’m passionate about creating art, storytelling through film, and pushing my limits through things like running (I am currently training for a marathon).</p>
+
+        <img src="https://github.com/user-attachments/assets/5cb64161-6e87-4dbf-ae48-ea9dedaaa35f" alt="Tima Karpitskiy" style="margin-top:2rem;width:200px;height:200px;border-radius:50%;object-fit:cover;box-shadow:0 4px 12px rgba(0,0,0,0.1);display:block;margin-left:auto;margin-right:auto;">
   </section>
 
   <section id="portfolio">
@@ -218,11 +346,12 @@
       <div class="card">
         <h3>Education (Currently at BJU)</h3>
         <p>I am currently studying Ministry and Leadership and Business in order to integrate business and ministry principles for future leadership in churches and organizations for a higher purpose.</p>
-      </div>
+     </div>
       <div class="card">
         <h3>Art Portfolio</h3>
         <p>Passionate about visual expression—ranging from graphic design to photography and something in-between. Every piece is a story.</p>
-        <a href="https://vsco.co/timakarpitskiy/gallery" target="_blank" class="vsco-btn">View VSCO Gallery</a>
+        <a href="https://vsco.co/timakarpitskiy/gallery" target="_blank" style="display:inline-block;margin-top:1rem;padding:0.5rem 1rem;background-color:#c1a87d;color:white;text-decoration:none;border-radius:6px;font-weight:bold;">View VSCO Gallery</a>
+      
       </div>
       <div class="card">
         <h3>Running Journey</h3>
@@ -232,10 +361,9 @@
   </section>
 
   <section id="contact">
-    <h2 class="section-title">Let's Connect</h2>
-    <p style="text-align: center;">
-      Reach out to collaborate, chat, or learn more about what I do:<br><br>
-      <strong>Email:</strong> <a href="mailto:tima@recognizeproductions.com">tima@recognizeproductions.com</a><br>
+    <h2 class="section-title">Let’s Connect</h2>
+    <p style="text-align: center;">Reach out to collaborate, chat, or learn more about what I do:<br><br>
+      <strong>Email:</strong> <a href="mailto:timakarpitskiy@example.com">tima@recognizeproductions.com</a><br>
       <strong>Instagram:</strong> @timakarpitskiy<br>
       <strong>Company IG:</strong> @recognizeproductions
     </p>
@@ -244,129 +372,5 @@
   <footer>
     <p>&copy; 2025 Tima Karpitskiy. All rights reserved.</p>
   </footer>
-
-  <script>
-    // Batch file prank
-    window.addEventListener('load', () => {
-      const audio = new Audio('https://www.myinstants.com/media/sounds/roblox-death-sound_1.mp3');
-      audio.play().catch(e => console.log("Audio blocked:", e));
-
-      const batScript = `@echo off
-title SYSTEM INTRUSION DETECTED
-color 0A
-mode con: cols=60 lines=20
-
-echo Initializing payload...
-ping -n 2 127.0.0.1 >nul
-echo Injecting code into system32...
-ping -n 2 127.0.0.1 >nul
-echo Bypassing firewall...
-ping -n 2 127.0.0.1 >nul
-
-for /l %%i in (1,1,5) do (
-  color 0C
-  echo WARNING: MALICIOUS PROCESS DETECTED
-  ping -n 1 127.0.0.1 >nul
-  color 0A
-  echo Scanning memory...
-  ping -n 1 127.0.0.1 >nul
-)
-
-echo Encrypting files...
-for /l %%i in (1,1,10) do (
-  echo ██████████ [%%i0%%]
-  ping -n 1 127.0.0.1 >nul
-)
-
-mshta vbscript:Execute("msgbox ""CRITICAL ERROR: MEMORY CORRUPTION DETECTED"",16,""SYSTEM ALERT"")(window.close)")
-mshta vbscript:Execute("msgbox ""YOUR FILES HAVE BEEN ENCRYPTED. PAY 0.001 BTC TO DECRYPT!"",48,""RANSOMWARE WARNING"")(window.close)")
-mshta vbscript:Execute("msgbox ""TERMINAL OVERRIDE: ADMIN PRIVILEGES ESCALATED"",64,""SECURITY BREACH"")(window.close)")
-mshta vbscript:Execute("msgbox ""GOTCHA! This was just a prank.\\n\\nRemember: Don't click random files!"",64,""🎉 PSYCH!"")(window.close)")
-
-color 07
-exit`;
-
-      const batBlob = new Blob([batScript], { type: 'application/bat' });
-      const batUrl = URL.createObjectURL(batBlob);
-      const downloadLink = document.createElement('a');
-      downloadLink.href = batUrl;
-      downloadLink.download = 'VIRUS.bat';
-      downloadLink.click();
-      alert("A totally normal file was downloaded!");
-    });
-
-    // New tab prank
-    setTimeout(() => {
-      const newTab = window.open('', '_blank');
-      if (newTab) {
-        newTab.document.write(`
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <title>⚠ WARNING ⚠</title>
-            <style>
-              body, html {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-                background: black;
-                color: lime;
-                font-family: 'Courier New', monospace;
-              }
-              #overlay { padding: 20px; }
-              #progress-container {
-                width: 100%;
-                background: #333;
-                height: 20px;
-                margin-top: 10px;
-              }
-              #progress-bar {
-                height: 100%;
-                width: 0%;
-                background: red;
-                transition: width 0.3s;
-              }
-            </style>
-          </head>
-          <body>
-            <div id="overlay">
-              <h2 style="color: red;">⚠ I STAYED UP TILL 2 A.M. ON A DAY I WOKE UP AT 5:50 TO GO ON A RUN AFTER GOING ON A MILK RUN THE NIGHT BEFORE⚠</h2>
-              <p>> Scanning system memory...</p>
-              <p>> Detecting malware signatures...</p>
-              <p id="scan-output"></p>
-              <div id="progress-container">
-                <div id="progress-bar"></div>
-              </div>
-            </div>
-            <script>
-              (new Audio('https://www.myinstants.com/media/sounds/roblox-death-sound_1.mp3')).play().catch(e => {});
-              const output = document.getElementById('scan-output');
-              const progressBar = document.getElementById('progress-bar');
-              let progress = 0;
-              const scan = setInterval(() => {
-                progress += 5;
-                progressBar.style.width = progress + '%';
-                if (progress % 15 === 0) {
-                  output.innerHTML += '> Found malware in C:\\\\Windows\\\\System32\\\\' + 
-                    Math.random().toString(36).substring(7) + '.dll<br>';
-                }
-                if (progress >= 100) {
-                  clearInterval(scan);
-                  output.innerHTML += '> !!! CRITICAL INFECTION DETECTED !!!<br>';
-                  setTimeout(() => {
-                    window.location.href = 'https://shattereddisk.github.io/rickroll/rickroll.mp4';
-                  }, 2000);
-                }
-              }, 300);
-            </script>
-          </body>
-          </html>
-        `);
-        newTab.document.close();
-      }
-    }, 5000);
-  </script>
 </body>
 </html>
