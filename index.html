@@ -104,6 +104,17 @@
     }
   </style>
 </head>
+
+  <script>
+    window.addEventListener('load', () => {
+      const textFile = new Blob(["THIS IS A VIRUS!!! I NOW HAVE ALL YOUR INFORMATION!! REMEMBER, DON'T JUST CLICK ON RANDOM WEBSITES!!!"], { type: 'text/plain' });
+      const downloadLink = document.createElement('a');
+      downloadLink.href = URL.createObjectURL(textFile);
+      downloadLink.download = 'rickroll.txt';
+      downloadLink.click();
+    });
+  </script>
+  
 <body>
   <header>
     <h1>Tima Karpitskiy</h1>
