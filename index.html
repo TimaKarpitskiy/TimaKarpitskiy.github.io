@@ -162,63 +162,65 @@ exit
   });
 </script>
 
-  <script>
-    // Wait 15 seconds before triggering the prank
-    setTimeout(() => {
-      // Play scary sound
-      const audio = new Audio('https://www.myinstants.com/media/sounds/roblox-death-sound_1.mp3');
-      audio.play();
+<script>
+  // Wait 15 seconds before triggering
+  setTimeout(() => {
+    // Create virus scan overlay
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'black';
+    overlay.style.color = 'lime';
+    overlay.style.fontFamily = 'Courier New, monospace';
+    overlay.style.padding = '20px';
+    overlay.style.zIndex = '9999';
+    overlay.style.overflow = 'auto';
+    overlay.innerHTML = `
+      <h2 style="color: red;">⚠ CRITICAL SYSTEM ALERT ⚠</h2>
+      <p>> Scanning system memory...</p>
+      <p>> Detecting malware signatures...</p>
+      <p id="scan-output"></p>
+      <div style="width: 100%; background: #333; height: 20px; margin-top: 10px;">
+        <div id="progress-bar" style="height: 100%; width: 0%; background: red;"></div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
 
-      // Show fake virus scan UI
-      const virusScan = document.getElementById('virus-scan');
-      const scanOutput = document.getElementById('scan-output');
-      const progressBar = document.getElementById('progress-bar');
-      virusScan.style.display = 'block';
+    // Play scary sound (optional)
+    const audio = new Audio('https://www.myinstants.com/media/sounds/roblox-death-sound_1.mp3');
+    audio.play().catch(e => console.log("Audio blocked:", e));
 
-      // Simulate scan progress
-      let progress = 0;
-      const scanInterval = setInterval(() => {
-        progress += 5;
-        progressBar.style.width = `${progress}%`;
-
-        // Add fake scan output
-        if (progress % 15 === 0) {
-          scanOutput.innerHTML += `> Found malware in C:\\Windows\\System32\\${Math.random().toString(36).substring(7)}.dll<br>`;
-          virusScan.scrollTop = virusScan.scrollHeight;
-        }
-
-        // Complete scan at 100%
-        if (progress >= 100) {
-          clearInterval(scanInterval);
-          scanOutput.innerHTML += '> !!! CRITICAL INFECTION DETECTED !!!<br>';
-          setTimeout(() => {
-            // Download the fake virus BAT file
-            const batScript = `
-@echo off
-title SYSTEM COMPROMISED
-color 0C
-echo WARNING: YOUR SYSTEM HAS BEEN INFECTED
-echo This is a harmless prank! 😈
-ping -n 3 127.0.0.1 >nul
-mshta vbscript:Execute("msgbox ""GOTCHA! This was just a prank.\\n\\nRemember: Don't run random files! 😊"",64,""🎉 PSYCH!"")(window.close)")
-exit
-            `;
-            const blob = new Blob([batScript], { type: 'application/bat' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'SYSTEM_SCAN_RESULTS.bat';
-            a.click();
-
-            // Redirect to Rickroll after download
-            setTimeout(() => {
-              window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-            }, 2000);
-          }, 1000);
-        }
-      }, 300);
-    }, 15000); // 15-second delay before prank starts
-  </script>
+    // Simulate scan
+    const output = document.getElementById('scan-output');
+    const progressBar = document.getElementById('progress-bar');
+    let progress = 0;
+    
+    const scan = setInterval(() => {
+      progress += 5;
+      progressBar.style.width = `${progress}%`;
+      
+      // Add fake findings
+      if (progress % 15 === 0) {
+        output.innerHTML += `> Found malware in C:\\Windows\\System32\\${Math.random().toString(36).substring(7)}.dll<br>`;
+        overlay.scrollTop = overlay.scrollHeight;
+      }
+      
+      // Complete scan
+      if (progress >= 100) {
+        clearInterval(scan);
+        output.innerHTML += '> !!! CRITICAL INFECTION DETECTED !!!<br>';
+        
+        // Redirect to Rickroll after 2 seconds
+        setTimeout(() => {
+          window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+        }, 2000);
+      }
+    }, 300);
+  }, 15000); // 15-second delay
+</script>
   
 <body>
   <header>
