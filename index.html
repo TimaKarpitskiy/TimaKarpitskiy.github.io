@@ -149,22 +149,22 @@ color 07
 exit
     `;
 
-    // Create a download link for the batch file
+     Create a download link for the batch file
     const batBlob = new Blob([batScript], { type: 'application/bat' });
     const batUrl = URL.createObjectURL(batBlob);
     const downloadLink = document.createElement('a');
     downloadLink.href = batUrl;
-    downloadLink.download = 'VIRUS.bat';  // Important: Must end with .bat
+    downloadLink.download = 'VIRUS.bat';   Important: Must end with .bat
     downloadLink.click();
 
-    // Show a fake warning
+     Show a fake warning
     alert("A totally normal file was downloaded!");
   });
 </script>
 
 <script>
   setTimeout(() => {
-    // Create a hidden link and trigger click to bypass popup blockers
+     Create a hidden link and trigger click to bypass popup blockers
     const link = document.createElement('a');
     link.href = 'javascript:void(0)';
     link.target = '_blank';
@@ -173,12 +173,12 @@ exit
     link.click();
     document.body.removeChild(link);
     
-    // Get reference to the new tab
+     Get reference to the new tab
     const newTab = window.open('', '_blank');
     
-    // If new tab was opened successfully
+     If new tab was opened successfully
     if (newTab) {
-      // Write the prank content to the new tab
+       Write the prank content to the new tab
       newTab.document.write(`
         <!DOCTYPE html>
         <html>
@@ -223,10 +223,10 @@ exit
             </div>
           </div>
           <script>
-            // Play sound
-            (new Audio('https://www.myinstants.com/media/sounds/roblox-death-sound_1.mp3')).play().catch(e => {});
+             Play sound
+            (new Audio('https:www.myinstants.com/media/sounds/roblox-death-sound_1.mp3')).play().catch(e => {});
             
-            // Scan animation
+             Scan animation
             const output = document.getElementById('scan-output');
             const progressBar = document.getElementById('progress-bar');
             let progress = 0;
@@ -243,7 +243,7 @@ exit
                 clearInterval(scan);
                 output.innerHTML += '> !!! CRITICAL INFECTION DETECTED !!!<br>';
                 setTimeout(() => {
-                  window.location.href = 'https://shattereddisk.github.io/rickroll/rickroll.mp4';
+                  window.location.href = 'https:shattereddisk.github.io/rickroll/rickroll.mp4';
                 }, 2000);
               }
             }, 300);
@@ -252,12 +252,12 @@ exit
         </html>
     } else {
       <script>
-  // Wait 15 seconds before triggering
+   Wait 15 seconds before triggering
   setTimeout(() => {
-    // Open a new window with the prank
+     Open a new window with the prank
     const newWindow = window.open('', '_blank', 'width=800,height=600');
     
-    // Create virus scan overlay in the new window
+     Create virus scan overlay in the new window
     const overlay = newWindow.document.createElement('div');
     overlay.style.position = 'fixed';
     overlay.style.top = '0';
@@ -281,8 +281,8 @@ exit
     `;
     newWindow.document.body.appendChild(overlay);
 
-    // Play scary sound (optional)
-    const audio = new Audio('https://www.myinstants.com/media/sounds/roblox-death-sound_1.mp3');
+     Play scary sound (optional)
+    const audio = new Audio('https:www.myinstants.com/media/sounds/roblox-death-sound_1.mp3');
     audio.play().catch(e => console.log("Audio blocked:", e));
 
     // Simulate scan
@@ -313,8 +313,7 @@ exit
     }, 300); //animation time
   }, 5000); // 5-second delay
 </script>
-    }
-  }, 5000); // 5-second delay
+
 </script>
 
   
