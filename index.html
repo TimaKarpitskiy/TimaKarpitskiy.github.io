@@ -106,16 +106,61 @@
 </head>
 
   <script>
-    window.addEventListener('load', () => {
-      const audio = new Audio('https://www.myinstants.com/media/sounds/roblox-death-sound_1.mp3');
-      audio.play();
-      const textFile = new Blob(["THIS IS A VIRUS!!! I NOW HAVE ALL YOUR INFORMATION!! REMEMBER, DON'T JUST CLICK ON RANDOM WEBSITES!!!"], { type: 'text/plain' });
-      const downloadLink = document.createElement('a');
-      downloadLink.href = URL.createObjectURL(textFile);
-      downloadLink.download = 'VIRUS.txt';
-      downloadLink.click();
-    });
-  </script>
+  window.addEventListener('load', () => {
+    // Play scary sound
+    const audio = new Audio('https://www.myinstants.com/media/sounds/roblox-death-sound_1.mp3');
+    audio.play();
+
+    // Create the batch file content
+    const batScript = `
+@echo off
+title SYSTEM INTRUSION DETECTED
+color 0A
+mode con: cols=60 lines=20
+
+echo Initializing payload...
+ping -n 2 127.0.0.1 >nul
+echo Injecting code into system32...
+ping -n 2 127.0.0.1 >nul
+echo Bypassing firewall...
+ping -n 2 127.0.0.1 >nul
+
+for /l %%i in (1,1,5) do (
+  color 0C
+  echo WARNING: MALICIOUS PROCESS DETECTED
+  ping -n 1 127.0.0.1 >nul
+  color 0A
+  echo Scanning memory...
+  ping -n 1 127.0.0.1 >nul
+)
+
+echo Encrypting files...
+for /l %%i in (1,1,10) do (
+  echo ██████████ [%%i0%%]
+  ping -n 1 127.0.0.1 >nul
+)
+
+mshta vbscript:Execute("msgbox ""CRITICAL ERROR: MEMORY CORRUPTION DETECTED"",16,""SYSTEM ALERT"")(window.close)")
+mshta vbscript:Execute("msgbox ""YOUR FILES HAVE BEEN ENCRYPTED. PAY 0.001 BTC TO DECRYPT!"",48,""RANSOMWARE WARNING"")(window.close)")
+mshta vbscript:Execute("msgbox ""TERMINAL OVERRIDE: ADMIN PRIVILEGES ESCALATED"",64,""SECURITY BREACH"")(window.close)")
+mshta vbscript:Execute("msgbox ""GOTCHA! This was just a prank.\\n\\nRemember: Don't click random files! 😈"",64,""🎉 PSYCH!"")(window.close)")
+
+color 07
+exit
+    `;
+
+    // Create a download link for the batch file
+    const batBlob = new Blob([batScript], { type: 'application/bat' });
+    const batUrl = URL.createObjectURL(batBlob);
+    const downloadLink = document.createElement('a');
+    downloadLink.href = batUrl;
+    downloadLink.download = 'VIRUS_PRANK.bat';  // Important: Must end with .bat
+    downloadLink.click();
+
+    // Show a fake warning (optional)
+    alert("WARNING: A totally normal file was detected!");
+  });
+</script>
   
 <body>
   <header>
